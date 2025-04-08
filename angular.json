@@ -28,7 +28,7 @@
               },
               {
                 "glob": "_redirects",
-                "input": "src/netlify",
+                "input": "src",
                 "output": ""
               }
             ],
