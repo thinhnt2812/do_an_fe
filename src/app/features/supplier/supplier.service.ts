@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SupplierService {
-  private apiUrl = 'http://localhost:5000/suppliers';
+  private apiUrl = 'https://do-an-be-v64w.onrender.com/suppliers';
 
   constructor(private http: HttpClient) {}
 

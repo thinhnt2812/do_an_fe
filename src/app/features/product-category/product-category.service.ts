@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductCategoryService {
-  private apiUrl = 'http://localhost:5000/product_categorys';
+  private apiUrl = 'https://do-an-be-v64w.onrender.com/product_categorys';
 
   constructor(private http: HttpClient) {}
 

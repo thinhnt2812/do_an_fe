@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/accounts';
+  private apiUrl = 'https://do-an-be-v64w.onrender.com/accounts';
 
   constructor(private http: HttpClient) {}
 

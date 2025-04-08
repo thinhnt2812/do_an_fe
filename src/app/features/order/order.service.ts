@@ -7,7 +7,7 @@ import { Order } from './order.model';
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:5000/orders';
+  private apiUrl = 'https://do-an-be-v64w.onrender.com/orders';
 
   constructor(private http: HttpClient) {}
 

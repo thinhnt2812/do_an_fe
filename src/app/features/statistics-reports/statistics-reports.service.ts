@@ -9,7 +9,7 @@ import { addDays, isAfter } from 'date-fns';
   providedIn: 'root',
 })
 export class StatisticsReportsService {
-  private baseUrl = 'http://localhost:5000';
+  private baseUrl = 'https://do-an-be-v64w.onrender.com';
   private employeesEndpoint = '/employees';
   private productsEndpoint = '/products';
   private suppliersEndpoint = '/suppliers';

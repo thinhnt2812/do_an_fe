@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ImportGoodsService {
-  private apiUrl = 'http://localhost:5000/import_goods';
+  private apiUrl = 'https://do-an-be-v64w.onrender.com/import_goods';
 
   constructor(private http: HttpClient) {}
 
