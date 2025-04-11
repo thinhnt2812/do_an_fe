@@ -48,6 +48,7 @@
     font-size: 15px;
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 .header_user_out:hover{
     cursor: pointer;
@@ -58,4 +59,40 @@
     color: var(--hover-color);
     padding-right: 10px;
     border-right: 1px solid white;
+}
+
+@media (max-width: 740px) {
+    .header{
+        padding: 0 10px;
+    }
+    .header_logo{
+        height: 36px;
+    }
+    .header_user_line{
+        display: none;
+    }
+    .header_user{
+        gap: 10px;
+    }
+    .header_user_contact{
+        padding: 0 10px;
+        font-size: 13px;
+    }
+    .header_user_name{
+        font-size: 13px;
+    }
+}
+@media (max-width: 480px) {
+    .header_logo{
+        display: none;
+    }
+    .header_user{
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+@media (max-width: 410px) {
+    .header_user_contact :nth-child(2){
+        display: none;
+    }
 }
