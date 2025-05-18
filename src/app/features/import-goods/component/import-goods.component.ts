@@ -48,6 +48,9 @@ export class ImportGoodsComponent implements OnInit {
   loadImportGoods() {
     this.importGoodsService.getImportGoods().subscribe((data) => {
       this.importGoods = data;
+      this.sortKey = 'id';
+      this.sortDirection = 'desc';
+      this.sortImportGoods('id');
       this.updatePaginatedImportGoods();
     });
   }

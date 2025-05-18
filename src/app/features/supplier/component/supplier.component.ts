@@ -36,6 +36,9 @@ export class SupplierComponent implements OnInit {
   loadSuppliers() {
     this.supplierService.getSuppliers().subscribe((data) => {
       this.suppliers = data;
+      this.sortKey = 'id';
+      this.sortDirection = 'desc';
+      this.sortSuppliers('id');
       this.updatePaginatedSuppliers();
     });
   }

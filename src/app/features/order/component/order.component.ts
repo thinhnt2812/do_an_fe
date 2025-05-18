@@ -83,7 +83,9 @@ export class OrderComponent implements OnInit {
   // Tải danh sách sản phẩm từ server
   loadProducts() {
     this.productService.getProducts().subscribe(data => {
-      this.products = data.filter(product => product.status === 'Đang bán');
+      this.products = data
+      .filter(product => product.status === 'Đang bán')
+      .sort((a, b) => parseInt(a.id) - parseInt(b.id));
       this.filteredProducts = this.products;
       this.onProductSearch();
     });
@@ -92,7 +94,9 @@ export class OrderComponent implements OnInit {
   // Tải danh sách danh mục sản phẩm từ server
   loadCategories() {
     this.productCategoryService.getCategories().subscribe(data => {
-      this.categories = data.filter(category => category.status === 'Đang hoạt động');
+      this.categories = data
+      .filter(category => category.status === 'Đang hoạt động')
+      .sort((a, b) => parseInt(a.id) - parseInt(b.id));
       this.onProductSearch();
     });
   }

@@ -51,6 +51,9 @@ export class EmployeeComponent implements OnInit {
   loadEmployees() {
     this.employeeService.getEmployees().subscribe((data) => {
       this.employees = data;
+      this.sortKey = 'id';
+      this.sortDirection = 'desc';
+      this.sortEmployees('id');
       this.updatePaginatedEmployees();
     });
   }

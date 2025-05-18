@@ -38,6 +38,9 @@ export class AccountComponent implements OnInit {
     // Hàm tải danh sách tài khoản từ service
     this.accountService.getAccounts().subscribe((data) => {
       this.accounts = data;
+      this.sortKey = 'id'; // Khóa sắp xếp mặc định
+      this.sortDirection = 'desc'; // Hướng sắp xếp mặc định
+      this.sortAccounts('id'); // Sắp xếp danh sách tài khoản theo ID
       this.updatePaginatedAccounts(); // Cập nhật danh sách tài khoản phân trang
     });
   }

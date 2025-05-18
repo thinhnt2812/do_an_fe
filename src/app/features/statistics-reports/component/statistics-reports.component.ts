@@ -454,7 +454,9 @@ export class StatisticsReportsComponent implements OnInit, AfterViewInit {
   loadAllOrders(): void {
     // Tải toàn bộ đơn hàng
     this.statisticsService.getAllOrders().subscribe((orders: any[]) => {
-        this.filteredOrders = orders;
+        this.filteredOrders = orders.sort((a, b) => a.id - b.id);
+        this.currentOrderSortField = 'id'; // Cập nhật trạng thái sort
+        this.currentOrderSortDirection = 'asc';
         this.totalOrderAmount = orders.reduce((sum, order) => sum + order.intomoney, 0);
         this.updatePagination();
     });
@@ -547,8 +549,10 @@ export class StatisticsReportsComponent implements OnInit, AfterViewInit {
   loadAllImports(): void {
     // Tải toàn bộ danh sách nhập khẩu
     this.statisticsService.getAllImports().subscribe((imports: any[]) => {
-        this.filteredImports = imports;
-        this.totalImportStatistics = imports.reduce((sum, item) => sum + item.quantity, 0); // Fix: Calculate total quantity
+        this.filteredImports = imports.sort((a, b) => a.id - b.id);
+        this.currentImportSortField = 'id'; // Cập nhật trạng thái sort
+        this.currentImportSortDirection = 'asc';
+        this.totalImportStatistics = imports.reduce((sum, item) => sum + item.quantity, 0);
         this.totalImportAmount = imports.reduce((sum, item) => sum + item.price * item.quantity, 0);
         this.updateImportPagination();
     });

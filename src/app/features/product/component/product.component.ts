@@ -57,6 +57,9 @@ export class ProductComponent implements OnInit {
   loadProducts() {
     this.productService.getProducts().subscribe((data) => {
       this.products = data;
+      this.sortKey = 'id';
+      this.sortDirection = 'desc';
+      this.sortProducts('id');
       this.updatePaginatedProducts();
     });
   }

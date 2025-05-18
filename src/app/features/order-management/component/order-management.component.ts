@@ -36,6 +36,8 @@ export class OrderManagementComponent implements OnInit {
     this.fetchProducts();
     this.pendingSearchTerm = this.searchTerm;
     this.pendingSelectedProduct = this.selectedProduct;
+    this.sortKey = 'id'; // Sắp xếp mặc định theo id
+    this.sortDirection = 'asc'; // Sắp xếp mặc định là tăng dần
   }
 
   // Lấy danh sách đơn hàng từ service
@@ -44,6 +46,7 @@ export class OrderManagementComponent implements OnInit {
       this.orders = data;
       this.filteredOrders = data;
       this.uniqueProducts = [...new Set(data.map(order => order.purchasedproduct))];
+      this.applyFilters();
     });
   }
 
@@ -99,13 +102,30 @@ export class OrderManagementComponent implements OnInit {
       this.filteredOrders.sort((a, b) => {
         const valueA = a[this.sortKey as keyof OrderManagementModel];
         const valueB = b[this.sortKey as keyof OrderManagementModel];
-        if (valueA < valueB) {
-          return this.sortDirection === 'asc' ? -1 : 1;
-        } else if (valueA > valueB) {
-          return this.sortDirection === 'asc' ? 1 : -1;
-        } else {
-          return 0;
+
+        // Nếu là số
+        if (!isNaN(Number(valueA)) && !isNaN(Number(valueB))) {
+          return this.sortDirection === 'asc'
+            ? Number(valueA) - Number(valueB)
+            : Number(valueB) - Number(valueA);
         }
+
+        // Nếu là ngày
+        if (
+          typeof valueA === 'string' &&
+          typeof valueB === 'string' &&
+          !isNaN(Date.parse(valueA)) &&
+          !isNaN(Date.parse(valueB))
+        ) {
+          return this.sortDirection === 'asc'
+            ? new Date(valueA).getTime() - new Date(valueB).getTime()
+            : new Date(valueB).getTime() - new Date(valueA).getTime();
+        }
+
+        // Mặc định là string
+        return this.sortDirection === 'asc'
+          ? String(valueA).localeCompare(String(valueB))
+          : String(valueB).localeCompare(String(valueA));
       });
     }
   }

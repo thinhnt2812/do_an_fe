@@ -36,6 +36,9 @@ export class ProductCategoryComponent implements OnInit {
     // Lấy danh sách danh mục sản phẩm từ dịch vụ và cập nhật danh sách phân trang
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data;
+      this.sortKey = 'id';
+      this.sortDirection = 'desc';
+      this.sortCategories('id');
       this.updatePaginatedCategories();
     });
   }
